@@ -200,9 +200,9 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
             {/* Section 2: Temporal Features */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400 font-mono">
+              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400">
                 <Calendar className="h-4 w-4" />
-                <span>2. Temporal & Calendar Parameters</span>
+                <span>2. Date & Time</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -292,9 +292,9 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
             {/* Section 3: Behavioral & Occupancy Features */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400 font-mono">
+              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400">
                 <Home className="h-4 w-4" />
-                <span>3. Occupancy & Electrical Loads</span>
+                <span>3. People & Appliances in the House</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

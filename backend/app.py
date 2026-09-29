@@ -4,6 +4,10 @@ from typing import Dict, Any, List
 import pandas as pd
 import numpy as np
 import os
+import sys
+
+# Ensure backend directory is in python module search path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from schemas import (
     ElectricityPredictionRequest,
