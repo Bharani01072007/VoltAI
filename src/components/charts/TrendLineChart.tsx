@@ -54,22 +54,22 @@ export const TrendLineChart: React.FC<TrendLineChartProps> = ({
   const hoveredPoint = hoveredIndex !== null ? data[hoveredIndex] : null;
 
   return (
-    <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">{title}</h3>
-          <p className="text-xs text-slate-400">{subtitle}</p>
+          <h3 className="text-sm font-bold text-slate-800">{title}</h3>
+          <p className="text-xs text-slate-500">{subtitle}</p>
         </div>
 
         {/* Legend */}
         <div className="flex items-center gap-4 text-xs font-mono">
           <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
-            <span className="text-slate-300">Actual (kWh)</span>
+            <span className="h-2.5 w-2.5 rounded-full bg-cyan-600" />
+            <span className="text-slate-600 font-medium">Actual (kWh)</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="h-0.5 w-3 border-t-2 border-dashed border-purple-400" />
-            <span className="text-slate-300">Model Predicted</span>
+            <span className="h-0.5 w-3 border-t-2 border-dashed border-purple-600" />
+            <span className="text-slate-600 font-medium">Model Predicted</span>
           </div>
         </div>
       </div>
@@ -81,8 +81,8 @@ export const TrendLineChart: React.FC<TrendLineChartProps> = ({
         >
           <defs>
             <linearGradient id="actualGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#0891b2" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#0891b2" stopOpacity="0.0" />
             </linearGradient>
           </defs>
 
@@ -97,14 +97,14 @@ export const TrendLineChart: React.FC<TrendLineChartProps> = ({
                   y1={y}
                   x2={padding.left + innerWidth}
                   y2={y}
-                  stroke="#334155"
+                  stroke="#e2e8f0"
                   strokeDasharray="3 3"
-                  strokeWidth="0.8"
+                  strokeWidth="1"
                 />
                 <text
                   x={padding.left - 10}
                   y={y + 4}
-                  fill="#94a3b8"
+                  fill="#64748b"
                   fontSize="11"
                   textAnchor="end"
                   fontFamily="monospace"
@@ -122,7 +122,7 @@ export const TrendLineChart: React.FC<TrendLineChartProps> = ({
           <path
             d={actualPath}
             fill="none"
-            stroke="#06b6d4"
+            stroke="#0891b2"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"

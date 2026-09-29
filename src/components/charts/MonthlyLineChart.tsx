@@ -31,14 +31,14 @@ export const MonthlyLineChart: React.FC<MonthlyLineChartProps> = ({
   );
 
   return (
-    <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">{title}</h3>
-          <p className="text-xs text-slate-400">Seasonal variance driven by heating & cooling requirements</p>
+          <h3 className="text-sm font-bold text-slate-800">{title}</h3>
+          <p className="text-xs text-slate-500">Seasonal variance driven by heating & cooling requirements</p>
         </div>
         {hoveredMonth && (
-          <span className="text-xs font-mono text-cyan-300">
+          <span className="text-xs font-mono font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">
             {hoveredMonth.month_name} ({hoveredMonth.season}): {hoveredMonth.avg_kwh.toFixed(1)} kWh
           </span>
         )}
@@ -55,7 +55,7 @@ export const MonthlyLineChart: React.FC<MonthlyLineChartProps> = ({
                 y1={y}
                 x2={padding.left + innerWidth}
                 y2={y}
-                stroke="#1e293b"
+                stroke="#e2e8f0"
                 strokeWidth="1"
               />
               <text
@@ -76,7 +76,7 @@ export const MonthlyLineChart: React.FC<MonthlyLineChartProps> = ({
         <path
           d={linePath}
           fill="none"
-          stroke="#06b6d4"
+          stroke="#0891b2"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -99,18 +99,19 @@ export const MonthlyLineChart: React.FC<MonthlyLineChartProps> = ({
               <circle
                 cx={x}
                 cy={y}
-                r={hoveredMonth?.month_name === d.month_name ? 5 : 3.5}
-                fill={isSummer ? '#f43f5e' : isWinter ? '#38bdf8' : '#10b981'}
-                stroke="#0f172a"
-                strokeWidth="1.5"
+                r={hoveredMonth?.month_name === d.month_name ? 5.5 : 4}
+                fill={isSummer ? '#f43f5e' : isWinter ? '#0284c7' : '#10b981'}
+                stroke="#ffffff"
+                strokeWidth="2"
               />
               <text
                 x={x}
                 y={padding.top + innerHeight + 16}
-                fill="#94a3b8"
+                fill="#64748b"
                 fontSize="10"
                 textAnchor="middle"
                 fontFamily="monospace"
+                fontWeight="500"
               >
                 {d.month_name}
               </text>
@@ -121,3 +122,4 @@ export const MonthlyLineChart: React.FC<MonthlyLineChartProps> = ({
     </div>
   );
 };
+

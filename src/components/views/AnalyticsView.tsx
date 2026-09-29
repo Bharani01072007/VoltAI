@@ -29,9 +29,9 @@ export const AnalyticsView: React.FC = () => {
 
   if (loading || !analytics) {
     return (
-      <div className="flex h-96 items-center justify-center space-x-2 text-slate-400">
-        <Loader2 className="h-6 w-6 animate-spin text-cyan-400" />
-        <span className="text-sm font-mono">Loading energy analytics telemetry...</span>
+      <div className="flex h-96 items-center justify-center space-x-2 text-slate-500">
+        <Loader2 className="h-6 w-6 animate-spin text-cyan-600" />
+        <span className="text-sm font-medium">Loading energy analytics...</span>
       </div>
     );
   }
@@ -39,19 +39,19 @@ export const AnalyticsView: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-mono">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-mono">
             Analytics & Load Diagnostics
           </h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-slate-500">
             Temporal patterns, diurnal load variations, category breakdown, and feature influence
           </p>
         </div>
 
         <button
           onClick={fetchAnalytics}
-          className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-mono text-slate-300 hover:text-white transition-colors self-start sm:self-auto"
+          className="flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-colors self-start sm:self-auto shadow-2xs cursor-pointer"
         >
           <RefreshCw className="h-3.5 w-3.5" />
           <span>Refresh Analytics</span>

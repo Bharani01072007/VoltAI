@@ -25,32 +25,32 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   accentColor = 'cyan',
 }) => {
   const accentBorder = {
-    cyan: 'hover:border-cyan-500/40',
-    emerald: 'hover:border-emerald-500/40',
-    amber: 'hover:border-amber-500/40',
-    blue: 'hover:border-blue-500/40',
-    purple: 'hover:border-purple-500/40',
+    cyan: 'hover:border-cyan-400',
+    emerald: 'hover:border-emerald-400',
+    amber: 'hover:border-amber-400',
+    blue: 'hover:border-blue-400',
+    purple: 'hover:border-purple-400',
   }[accentColor];
 
   const iconColor = {
-    cyan: 'text-cyan-400 bg-cyan-950/60 border-cyan-800/50',
-    emerald: 'text-emerald-400 bg-emerald-950/60 border-emerald-800/50',
-    amber: 'text-amber-400 bg-amber-950/60 border-amber-800/50',
-    blue: 'text-blue-400 bg-blue-950/60 border-blue-800/50',
-    purple: 'text-purple-400 bg-purple-950/60 border-purple-800/50',
+    cyan: 'text-cyan-600 bg-cyan-50 border-cyan-200',
+    emerald: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+    amber: 'text-amber-600 bg-amber-50 border-amber-200',
+    blue: 'text-blue-600 bg-blue-50 border-blue-200',
+    purple: 'text-purple-600 bg-purple-50 border-purple-200',
   }[accentColor];
 
   return (
     <div
-      className={`relative rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 backdrop-blur-sm transition-all duration-200 ${accentBorder}`}
+      className={`relative rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition-all duration-200 ${accentBorder}`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-medium tracking-wide text-slate-400 uppercase">
+          <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
             {title}
           </p>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold tracking-tight text-slate-100 font-mono tabular-nums">
+            <span className="text-2xl font-bold tracking-tight text-slate-900 font-mono tabular-nums">
               {value}
             </span>
             {badge}
@@ -67,15 +67,15 @@ export const MetricCard: React.FC<MetricCardProps> = ({
       </div>
 
       {(subtitle || trend) && (
-        <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-800/60 pt-3 text-xs">
-          {subtitle && <span className="text-slate-400 truncate">{subtitle}</span>}
+        <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs">
+          {subtitle && <span className="text-slate-500 truncate">{subtitle}</span>}
           {trend && (
             <span
-              className={`shrink-0 font-medium font-mono tabular-nums ${
-                trend.isPositive ? 'text-emerald-400' : 'text-amber-400'
+              className={`shrink-0 font-semibold font-mono tabular-nums ${
+                trend.isPositive ? 'text-emerald-600' : 'text-amber-600'
               }`}
             >
-              {trend.value} {trend.label && <span className="text-slate-500 font-sans">{trend.label}</span>}
+              {trend.value} {trend.label && <span className="text-slate-400 font-sans">{trend.label}</span>}
             </span>
           )}
         </div>
@@ -83,3 +83,4 @@ export const MetricCard: React.FC<MetricCardProps> = ({
     </div>
   );
 };
+

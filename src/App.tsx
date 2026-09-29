@@ -34,7 +34,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-200">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-800">
       {/* Top Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -71,18 +71,18 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950/90 py-6 text-xs text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-6 text-xs text-slate-500 shadow-sm">
         <div className="mx-auto flex max-w-7xl flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <div className="flex h-5 w-5 items-center justify-center rounded bg-cyan-500/10 text-cyan-400">
+            <div className="flex h-5 w-5 items-center justify-center rounded bg-cyan-100 text-cyan-700">
               <Zap className="h-3 w-3" />
             </div>
-            <span className="font-mono font-medium text-slate-400">
+            <span className="font-medium text-slate-700">
               VoltAI · Electricity Consumption Classification Platform
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
+          <div className="flex items-center gap-4 text-slate-500 font-mono text-[11px]">
             <span>Classification Tiers: LOW · MEDIUM · HIGH</span>
             <span aria-hidden="true">·</span>
             <span>REST API Ready: POST /predict</span>

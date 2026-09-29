@@ -71,10 +71,10 @@ export const CategoryDonutChart: React.FC<CategoryDonutChartProps> = ({
   let cumulativeOffset = 0;
 
   return (
-    <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
       <div className="mb-4">
-        <h3 className="text-sm font-semibold text-slate-200">{title}</h3>
-        <p className="text-xs text-slate-400">
+        <h3 className="text-sm font-bold text-slate-800">{title}</h3>
+        <p className="text-xs text-slate-500">
           Classification bracket distribution across {distribution.total.toLocaleString()} samples
         </p>
       </div>
@@ -110,10 +110,10 @@ export const CategoryDonutChart: React.FC<CategoryDonutChartProps> = ({
 
           {/* Center text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center select-none pointer-events-none">
-            <span className="text-xs text-slate-400 font-mono">
+            <span className="text-xs text-slate-500 font-mono font-medium">
               {activeSegment ? activeSegment : 'Total'}
             </span>
-            <span className="text-lg font-bold font-mono text-slate-100 tabular-nums">
+            <span className="text-lg font-bold font-mono text-slate-900 tabular-nums">
               {activeSegment
                 ? `${categories.find((c) => c.key === activeSegment)?.pct.toFixed(1)}%`
                 : distribution.total.toLocaleString()}
@@ -122,7 +122,7 @@ export const CategoryDonutChart: React.FC<CategoryDonutChartProps> = ({
         </div>
 
         {/* Legend / Metrics List */}
-        <div className="flex-1 w-full space-y-3">
+        <div className="flex-1 w-full space-y-2.5">
           {categories.map((cat) => {
             const isHovered = activeSegment === cat.key;
             return (
@@ -130,28 +130,28 @@ export const CategoryDonutChart: React.FC<CategoryDonutChartProps> = ({
                 key={cat.key}
                 onMouseEnter={() => setActiveSegment(cat.key)}
                 onMouseLeave={() => setActiveSegment(null)}
-                className={`flex items-center justify-between p-2.5 rounded-lg border transition-colors cursor-pointer ${
+                className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors cursor-pointer ${
                   isHovered
-                    ? 'border-slate-700 bg-slate-800/80'
-                    : 'border-slate-800/50 bg-slate-900/40 hover:bg-slate-800/40'
+                    ? 'border-slate-300 bg-slate-100/80 shadow-2xs'
+                    : 'border-slate-200 bg-slate-50 hover:bg-slate-100/50'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <span
-                    className="h-3 w-3 rounded-full shrink-0"
+                    className="h-3 w-3 rounded-full shrink-0 shadow-2xs"
                     style={{ backgroundColor: cat.color }}
                   />
                   <div>
-                    <div className="text-xs font-medium text-slate-200">{cat.label}</div>
-                    <div className="text-[11px] text-slate-400">{cat.threshold}</div>
+                    <div className="text-xs font-bold text-slate-800">{cat.label}</div>
+                    <div className="text-[11px] text-slate-500">{cat.threshold}</div>
                   </div>
                 </div>
 
                 <div className="text-right font-mono">
-                  <div className="text-xs font-bold text-slate-100 tabular-nums">
+                  <div className="text-xs font-bold text-slate-900 tabular-nums">
                     {cat.count.toLocaleString()}
                   </div>
-                  <div className="text-[11px] text-slate-400 tabular-nums">
+                  <div className="text-[11px] text-slate-500 tabular-nums font-semibold">
                     {cat.pct.toFixed(1)}%
                   </div>
                 </div>

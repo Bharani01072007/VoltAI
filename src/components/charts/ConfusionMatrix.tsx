@@ -29,36 +29,36 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
   const matrixAccuracy = ((truePositives / data.total_samples) * 100).toFixed(1);
 
   return (
-    <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-semibold text-slate-200">Confusion Matrix</h3>
-            <span className="text-xs font-mono text-cyan-400">[{modelName}]</span>
+            <h3 className="text-sm font-bold text-slate-800">Confusion Matrix</h3>
+            <span className="text-xs font-mono font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">[{modelName}]</span>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             Actual vs Predicted class distribution ({data.total_samples.toLocaleString()} test evaluations)
           </p>
         </div>
 
         {/* Toggle Normalized vs Count */}
-        <div className="flex items-center gap-1 p-1 bg-slate-800/80 rounded-lg text-xs font-medium self-start sm:self-auto">
+        <div className="flex items-center gap-1 p-1 bg-slate-100 border border-slate-200 rounded-xl text-xs font-medium self-start sm:self-auto">
           <button
             onClick={() => setShowNormalized(false)}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
               !showNormalized
-                ? 'bg-cyan-500/20 text-cyan-300 font-semibold shadow-xs'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-white text-cyan-700 font-bold shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Raw Counts
           </button>
           <button
             onClick={() => setShowNormalized(true)}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
               showNormalized
-                ? 'bg-cyan-500/20 text-cyan-300 font-semibold shadow-xs'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-white text-cyan-700 font-bold shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             Normalized (%)
@@ -70,23 +70,23 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
       <div className="relative overflow-x-auto">
         <div className="min-w-[420px]">
           {/* Top Axis Label: Predicted Class */}
-          <div className="text-center text-xs font-mono font-medium text-cyan-400 uppercase tracking-wider mb-2">
+          <div className="text-center text-xs font-mono font-bold text-cyan-700 uppercase tracking-wider mb-2">
             Predicted Class
           </div>
 
           <div className="flex">
             {/* Left Axis Label: Actual Class */}
-            <div className="flex items-center justify-center -rotate-90 text-xs font-mono font-medium text-purple-400 uppercase tracking-wider w-8">
+            <div className="flex items-center justify-center -rotate-90 text-xs font-mono font-bold text-purple-700 uppercase tracking-wider w-8">
               Actual Class
             </div>
 
             {/* Matrix Grid */}
             <div className="flex-1">
               {/* Column Header */}
-              <div className="grid grid-cols-4 gap-2 mb-2 text-center text-xs font-mono text-slate-400">
+              <div className="grid grid-cols-4 gap-2 mb-2 text-center text-xs font-mono text-slate-500">
                 <div /> {/* blank corner */}
                 {labels.map((colLabel) => (
-                  <div key={colLabel} className="font-semibold text-slate-300">
+                  <div key={colLabel} className="font-bold text-slate-700">
                     {colLabel}
                   </div>
                 ))}
@@ -100,7 +100,7 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
                 return (
                   <div key={actualLabel} className="grid grid-cols-4 gap-2 mb-2 items-center">
                     {/* Row Label */}
-                    <div className="text-right text-xs font-mono font-semibold text-slate-300 pr-2">
+                    <div className="text-right text-xs font-mono font-bold text-slate-700 pr-2">
                       {actualLabel}
                     </div>
 
@@ -123,26 +123,26 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
                             })
                           }
                           onMouseLeave={() => setHoveredCell(null)}
-                          className={`relative flex flex-col items-center justify-center p-3 rounded-lg border cursor-pointer transition-all duration-150 ${
+                          className={`relative flex flex-col items-center justify-center p-3 rounded-xl border cursor-pointer transition-all duration-150 shadow-2xs ${
                             isDiagonal
-                              ? 'border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25'
-                              : 'border-slate-800 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-800/40'
+                              ? 'border-emerald-300 bg-emerald-50 hover:bg-emerald-100'
+                              : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-slate-100'
                           }`}
                           style={{
                             backgroundColor: isDiagonal
-                              ? `rgba(16, 185, 129, ${0.12 + intensity * 0.28})`
-                              : `rgba(244, 63, 94, ${intensity * 0.15})`,
+                              ? `rgba(16, 185, 129, ${0.1 + intensity * 0.25})`
+                              : `rgba(244, 63, 94, ${intensity * 0.12})`,
                           }}
                         >
                           <span
                             className={`text-sm font-bold font-mono tabular-nums ${
-                              isDiagonal ? 'text-emerald-300' : 'text-slate-300'
+                              isDiagonal ? 'text-emerald-800' : 'text-slate-800'
                             }`}
                           >
                             {showNormalized ? `${pctOfRow}%` : count.toLocaleString()}
                           </span>
 
-                          <span className="text-[10px] text-slate-400 font-mono mt-0.5">
+                          <span className="text-[10px] text-slate-500 font-mono mt-0.5 font-medium">
                             {showNormalized ? `${count} samples` : `${pctOfRow}% row`}
                           </span>
                         </div>
@@ -157,12 +157,12 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
       </div>
 
       {/* Footer / Hover inspection banner */}
-      <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-slate-800/60 pt-3 text-xs">
-        <div className="text-slate-400">
+      <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-slate-100 pt-3 text-xs">
+        <div className="text-slate-600">
           {hoveredCell ? (
-            <span className="font-mono text-cyan-300">
-              Actual <strong className="text-purple-300">{hoveredCell.actual}</strong> → Predicted{' '}
-              <strong className="text-cyan-300">{hoveredCell.predicted}</strong>:{' '}
+            <span className="font-mono text-cyan-800 font-medium">
+              Actual <strong className="text-purple-800">{hoveredCell.actual}</strong> → Predicted{' '}
+              <strong className="text-cyan-800">{hoveredCell.predicted}</strong>:{' '}
               {hoveredCell.count.toLocaleString()} cases ({hoveredCell.pct}% of actual class)
               {hoveredCell.actual === hoveredCell.predicted ? ' (Correct TP)' : ' (Misclassified)'}
             </span>
@@ -171,10 +171,11 @@ export const ConfusionMatrix: React.FC<ConfusionMatrixProps> = ({ data, modelNam
           )}
         </div>
 
-        <div className="font-mono text-emerald-400 font-semibold mt-1 sm:mt-0">
+        <div className="font-mono text-emerald-700 font-bold mt-1 sm:mt-0">
           Accuracy: {matrixAccuracy}%
         </div>
       </div>
     </div>
   );
 };
+

@@ -109,47 +109,47 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
   return (
     <div className="space-y-6">
       {/* Page Title */}
-      <div className="border-b border-slate-800/80 pb-6">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-mono">
+      <div className="border-b border-slate-200 pb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-mono">
           ⚡ Will My Electricity Usage Be High?
         </h1>
-        <p className="mt-1 text-sm text-slate-400">
-          Just fill in the simple details below — weather, time, and how many people & appliances are at home. Our AI will tell you if usage will be <strong className="text-emerald-400">LOW</strong>, <strong className="text-amber-400">MEDIUM</strong>, or <strong className="text-rose-400">HIGH</strong> 🎯
+        <p className="mt-1 text-sm text-slate-500">
+          Just fill in the simple details below — weather, time, and how many people & appliances are at home. Our AI will tell you if usage will be <strong className="text-emerald-600 font-bold">LOW</strong>, <strong className="text-amber-600 font-bold">MEDIUM</strong>, or <strong className="text-rose-600 font-bold">HIGH</strong> 🎯
         </p>
       </div>
 
       {/* Preset Quick Scenario Selector */}
-      <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4">
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-xs">
         <div className="flex items-center gap-2 mb-3">
-          <Sparkles className="h-4 w-4 text-cyan-400" />
-          <span className="text-xs font-semibold text-slate-300">🚀 Try a Ready-Made Example:</span>
+          <Sparkles className="h-4 w-4 text-cyan-600" />
+          <span className="text-xs font-bold text-slate-800">🚀 Try a Ready-Made Example:</span>
           <span className="text-xs text-slate-500">(Click any card below to auto-fill the form)</span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           {PRESET_SCENARIOS.map((preset) => (
             <button
               key={preset.name}
               type="button"
               onClick={() => handleApplyPreset(preset)}
-              className="flex flex-col text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950/60 hover:border-cyan-500/50 hover:bg-slate-800/50 transition-all text-xs group"
+              className="flex flex-col text-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:border-cyan-400 hover:bg-cyan-50/50 transition-all text-xs group cursor-pointer shadow-2xs"
             >
               <div className="flex items-center justify-between w-full">
-                <span className="font-semibold text-slate-200 group-hover:text-cyan-300">
+                <span className="font-semibold text-slate-800 group-hover:text-cyan-700">
                   {preset.name}
                 </span>
                 <span
-                  className={`text-[10px] font-mono px-1 rounded ${
+                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold border ${
                     preset.expectedClass === 'HIGH'
-                      ? 'text-rose-400 bg-rose-950/40'
+                      ? 'text-rose-700 bg-rose-50 border-rose-200'
                       : preset.expectedClass === 'LOW'
-                      ? 'text-emerald-400 bg-emerald-950/40'
-                      : 'text-amber-400 bg-amber-950/40'
+                      ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                      : 'text-amber-800 bg-amber-50 border-amber-200'
                   }`}
                 >
                   {preset.expectedClass}
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 mt-1 line-clamp-1">
+              <span className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                 {preset.tagline}
               </span>
             </button>
@@ -160,11 +160,11 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
       {/* Form and Result Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Input Form (7 cols on large screen) */}
-        <div className="lg:col-span-7 rounded-xl border border-slate-800/90 bg-slate-900/70 p-6 backdrop-blur-sm">
+        <div className="lg:col-span-7 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Section 1: Environmental Features */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400 font-mono">
+              <div className="flex items-center gap-2 border-b border-slate-100 pb-2 text-xs font-bold text-cyan-700">
                 <Thermometer className="h-4 w-4" />
                 <span>1. 🌡️ Weather Outside</span>
               </div>
@@ -200,7 +200,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
             {/* Section 2: Temporal Features */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400">
+              <div className="flex items-center gap-2 border-b border-slate-100 pb-2 text-xs font-bold text-cyan-700">
                 <Calendar className="h-4 w-4" />
                 <span>2. Date & Time</span>
               </div>
@@ -208,14 +208,14 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* Hour */}
                 <div className="space-y-1.5">
-                  <label htmlFor="hour-select" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="hour-select" className="text-xs font-semibold text-slate-700">
                     🕐 What Time Is It Now?
                   </label>
                   <select
                     id="hour-select"
                     value={formData.hour}
                     onChange={(e) => handleFieldChange('hour', parseInt(e.target.value, 10))}
-                    className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-mono text-slate-100 focus:border-cyan-500 focus:outline-none"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono text-slate-900 focus:border-cyan-600 focus:outline-none shadow-2xs"
                   >
                     {Array.from({ length: 24 }).map((_, h) => (
                       <option key={h} value={h}>
@@ -223,12 +223,12 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                       </option>
                     ))}
                   </select>
-                  {errors.hour && <p className="text-[11px] text-rose-400">{errors.hour}</p>}
+                  {errors.hour && <p className="text-[11px] text-rose-600 font-medium">{errors.hour}</p>}
                 </div>
 
                 {/* Day */}
                 <div className="space-y-1.5">
-                  <label htmlFor="day-input" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="day-input" className="text-xs font-semibold text-slate-700">
                     📆 Today's Date (1–31)
                   </label>
                   <input
@@ -238,22 +238,22 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                     max={31}
                     value={formData.day}
                     onChange={(e) => handleFieldChange('day', parseInt(e.target.value, 10))}
-                    className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-mono text-slate-100 focus:border-cyan-500 focus:outline-none"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono text-slate-900 focus:border-cyan-600 focus:outline-none shadow-2xs"
                     placeholder="e.g. 15"
                   />
-                  {errors.day && <p className="text-[11px] text-rose-400">{errors.day}</p>}
+                  {errors.day && <p className="text-[11px] text-rose-600 font-medium">{errors.day}</p>}
                 </div>
 
                 {/* Month */}
                 <div className="space-y-1.5">
-                  <label htmlFor="month-select" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="month-select" className="text-xs font-semibold text-slate-700">
                     🗓️ Which Month?
                   </label>
                   <select
                     id="month-select"
                     value={formData.month}
                     onChange={(e) => handleFieldChange('month', parseInt(e.target.value, 10))}
-                    className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-mono text-slate-100 focus:border-cyan-500 focus:outline-none"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-mono text-slate-900 focus:border-cyan-600 focus:outline-none shadow-2xs"
                   >
                     {months.map((m) => (
                       <option key={m.value} value={m.value}>
@@ -261,23 +261,23 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                       </option>
                     ))}
                   </select>
-                  {errors.month && <p className="text-[11px] text-rose-400">{errors.month}</p>}
+                  {errors.month && <p className="text-[11px] text-rose-600 font-medium">{errors.month}</p>}
                 </div>
               </div>
 
               {/* Weekend Toggle */}
-              <div className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-950/60 p-3">
+              <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 p-3">
                 <div>
-                  <span className="text-xs font-medium text-slate-200 block">🏖️ Is Today a Weekend?</span>
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-xs font-semibold text-slate-800 block">🏖️ Is Today a Weekend?</span>
+                  <span className="text-[11px] text-slate-500">
                     Saturday or Sunday — people stay home longer, so usage is usually higher
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleFieldChange('is_weekend', !formData.is_weekend)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    formData.is_weekend ? 'bg-cyan-500' : 'bg-slate-700'
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer ${
+                    formData.is_weekend ? 'bg-cyan-600' : 'bg-slate-300'
                   }`}
                   aria-pressed={formData.is_weekend}
                 >
@@ -292,7 +292,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
             {/* Section 3: Behavioral & Occupancy Features */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400">
+              <div className="flex items-center gap-2 border-b border-slate-100 pb-2 text-xs font-bold text-cyan-700">
                 <Home className="h-4 w-4" />
                 <span>3. People & Appliances in the House</span>
               </div>
@@ -341,8 +341,8 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
             {/* API Error Notification */}
             {apiError && (
-              <div className="flex items-center gap-2 rounded-lg border border-rose-500/40 bg-rose-950/30 p-3 text-xs text-rose-300">
-                <AlertCircle className="h-4 w-4 shrink-0" />
+              <div className="flex items-center gap-2 rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs text-rose-700">
+                <AlertCircle className="h-4 w-4 shrink-0 text-rose-600" />
                 <span>{apiError}</span>
               </div>
             )}
@@ -352,7 +352,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all disabled:opacity-60 cursor-pointer"
+                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all disabled:opacity-60 cursor-pointer"
               >
                 {isLoading ? (
                   <>
@@ -370,7 +370,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               <button
                 type="button"
                 onClick={handleReset}
-                className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                className="flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-4 py-3 text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer shadow-2xs"
                 title="Clear all fields and start fresh"
               >
                 <RotateCcw className="h-4 w-4" />
@@ -389,17 +389,17 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               onReset={() => setResult(null)}
             />
           ) : (
-            <div className="rounded-xl border border-dashed border-slate-800 bg-slate-900/40 p-8 text-center space-y-3">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/60 text-slate-500">
-                <Zap className="h-6 w-6 text-slate-400" />
+            <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center space-y-3 shadow-2xs">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-50 text-cyan-600">
+                <Zap className="h-6 w-6" />
               </div>
-              <h3 className="text-sm font-semibold text-slate-200">Your result will appear here!</h3>
-              <p className="text-xs text-slate-400 max-w-sm mx-auto">
+              <h3 className="text-sm font-bold text-slate-800">Your result will appear here!</h3>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto">
                 Fill in the details on the left — or pick a ready-made example above — then click{' '}
-                <strong className="text-cyan-400">Check My Electricity Usage</strong> to get your prediction.
+                <strong className="text-cyan-700 font-semibold">Check My Electricity Usage</strong> to get your prediction.
               </p>
               <div className="pt-2 text-[11px] text-slate-500">
-                ✅ Result will be: <span className="text-emerald-400 font-semibold">LOW</span> / <span className="text-amber-400 font-semibold">MEDIUM</span> / <span className="text-rose-400 font-semibold">HIGH</span>
+                ✅ Result will be: <span className="text-emerald-600 font-bold">LOW</span> / <span className="text-amber-600 font-bold">MEDIUM</span> / <span className="text-rose-600 font-bold">HIGH</span>
               </div>
             </div>
           )}
