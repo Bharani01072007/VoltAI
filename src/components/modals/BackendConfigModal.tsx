@@ -107,7 +107,6 @@ def predict_consumption(req: PredictionRequest):
 `;
 
   return (
-  return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
       <div className="relative w-full max-w-2xl rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
