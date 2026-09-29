@@ -111,10 +111,10 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
       {/* Page Title */}
       <div className="border-b border-slate-800/80 pb-6">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-mono">
-          Predict Electricity Consumption
+          ⚡ Will My Electricity Usage Be High?
         </h1>
         <p className="mt-1 text-sm text-slate-400">
-          Enter environmental, temporal, and occupancy parameters to evaluate classification outcome
+          Just fill in the simple details below — weather, time, and how many people & appliances are at home. Our AI will tell you if usage will be <strong className="text-emerald-400">LOW</strong>, <strong className="text-amber-400">MEDIUM</strong>, or <strong className="text-rose-400">HIGH</strong> 🎯
         </p>
       </div>
 
@@ -122,8 +122,8 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
       <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4">
         <div className="flex items-center gap-2 mb-3">
           <Sparkles className="h-4 w-4 text-cyan-400" />
-          <span className="text-xs font-semibold text-slate-300">Quick Test Scenarios:</span>
-          <span className="text-xs text-slate-500">(Click to load benchmark parameter profiles)</span>
+          <span className="text-xs font-semibold text-slate-300">🚀 Try a Ready-Made Example:</span>
+          <span className="text-xs text-slate-500">(Click any card below to auto-fill the form)</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {PRESET_SCENARIOS.map((preset) => (
@@ -166,32 +166,32 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
             <div className="space-y-4">
               <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold text-cyan-400 font-mono">
                 <Thermometer className="h-4 w-4" />
-                <span>1. Environmental Variables</span>
+                <span>1. 🌡️ Weather Outside</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SliderInput
-                  label="Temperature"
+                  label="🌡️ How Hot Is It Outside?"
                   name="temperature"
                   value={formData.temperature}
                   min={-10}
                   max={50}
                   step={0.5}
                   unit="°C"
-                  description="Ambient outdoor temperature"
+                  description="Current outside temperature (e.g. 35°C = hot summer day)"
                   error={errors.temperature}
                   onChange={(val) => handleFieldChange('temperature', val)}
                 />
 
                 <SliderInput
-                  label="Relative Humidity"
+                  label="💧 How Humid / Sticky Is the Air?"
                   name="humidity"
                   value={formData.humidity}
                   min={10}
                   max={100}
                   step={1}
                   unit="%"
-                  description="Ambient air humidity"
+                  description="Higher humidity = AC works harder = more electricity"
                   error={errors.humidity}
                   onChange={(val) => handleFieldChange('humidity', val)}
                 />
@@ -209,7 +209,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                 {/* Hour */}
                 <div className="space-y-1.5">
                   <label htmlFor="hour-select" className="text-xs font-medium text-slate-300">
-                    Hour of Day
+                    🕐 What Time Is It Now?
                   </label>
                   <select
                     id="hour-select"
@@ -219,7 +219,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                   >
                     {Array.from({ length: 24 }).map((_, h) => (
                       <option key={h} value={h}>
-                        {h.toString().padStart(2, '0')}:00 {h >= 17 && h <= 21 ? '🔥 (Peak)' : h >= 1 && h <= 5 ? '🌙 (Off-peak)' : ''}
+                        {h.toString().padStart(2, '0')}:00 {h >= 17 && h <= 21 ? '🔥 Evening Peak' : h >= 1 && h <= 5 ? '🌙 Late Night' : h >= 6 && h <= 9 ? '🌅 Morning' : h >= 22 ? '😴 Bedtime' : ''}
                       </option>
                     ))}
                   </select>
@@ -229,7 +229,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                 {/* Day */}
                 <div className="space-y-1.5">
                   <label htmlFor="day-input" className="text-xs font-medium text-slate-300">
-                    Day of Month
+                    📆 Today's Date (1–31)
                   </label>
                   <input
                     id="day-input"
@@ -239,6 +239,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                     value={formData.day}
                     onChange={(e) => handleFieldChange('day', parseInt(e.target.value, 10))}
                     className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-mono text-slate-100 focus:border-cyan-500 focus:outline-none"
+                    placeholder="e.g. 15"
                   />
                   {errors.day && <p className="text-[11px] text-rose-400">{errors.day}</p>}
                 </div>
@@ -246,7 +247,7 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                 {/* Month */}
                 <div className="space-y-1.5">
                   <label htmlFor="month-select" className="text-xs font-medium text-slate-300">
-                    Month
+                    🗓️ Which Month?
                   </label>
                   <select
                     id="month-select"
@@ -267,9 +268,9 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               {/* Weekend Toggle */}
               <div className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-950/60 p-3">
                 <div>
-                  <span className="text-xs font-medium text-slate-200 block">Weekend Indicator</span>
+                  <span className="text-xs font-medium text-slate-200 block">🏖️ Is Today a Weekend?</span>
                   <span className="text-[11px] text-slate-400">
-                    Saturday or Sunday residential schedule shift
+                    Saturday or Sunday — people stay home longer, so usage is usually higher
                   </span>
                 </div>
                 <button
@@ -298,40 +299,40 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <SliderInput
-                  label="Occupancy"
+                  label="👨‍👩‍👧 How Many People Are Home?"
                   name="occupancy"
                   value={formData.occupancy}
                   min={1}
                   max={15}
                   step={1}
-                  unit=" ppl"
-                  description="People present"
+                  unit=" people"
+                  description="More people = more lights, fans, devices ON"
                   error={errors.occupancy}
                   onChange={(val) => handleFieldChange('occupancy', val)}
                 />
 
                 <SliderInput
-                  label="Prev Consumption"
+                  label="⚡ Last Hour's Usage (kWh)"
                   name="previous_consumption"
                   value={formData.previous_consumption}
                   min={0.1}
                   max={15.0}
                   step={0.1}
                   unit=" kWh"
-                  description="Lagged baseline draw"
+                  description="How much electricity was used in the previous hour?"
                   error={errors.previous_consumption}
                   onChange={(val) => handleFieldChange('previous_consumption', val)}
                 />
 
                 <SliderInput
-                  label="Appliance Units"
+                  label="🔌 Big Appliances Running?"
                   name="appliance_usage"
                   value={formData.appliance_usage}
                   min={0}
                   max={12}
                   step={1}
-                  unit=" units"
-                  description="Active heavy appliances"
+                  unit=" appliances"
+                  description="AC, washing machine, oven, geyser, EV charger, etc."
                   error={errors.appliance_usage}
                   onChange={(val) => handleFieldChange('appliance_usage', val)}
                 />
@@ -356,12 +357,12 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                 {isLoading ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    <span>Inference in Progress...</span>
+                    <span>🤖 AI is thinking...</span>
                   </>
                 ) : (
                   <>
                     <Zap className="h-4 w-4" />
-                    <span>Predict Consumption</span>
+                    <span>Check My Electricity Usage</span>
                   </>
                 )}
               </button>
@@ -370,10 +371,10 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
                 type="button"
                 onClick={handleReset}
                 className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
-                title="Reset form fields to defaults"
+                title="Clear all fields and start fresh"
               >
                 <RotateCcw className="h-4 w-4" />
-                <span>Reset</span>
+                <span>Start Over</span>
               </button>
             </div>
           </form>
@@ -392,13 +393,13 @@ export const PredictView: React.FC<PredictViewProps> = ({ onPredictionComplete }
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/60 text-slate-500">
                 <Zap className="h-6 w-6 text-slate-400" />
               </div>
-              <h3 className="text-sm font-semibold text-slate-200">Awaiting Inference Request</h3>
+              <h3 className="text-sm font-semibold text-slate-200">Your result will appear here!</h3>
               <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                Adjust input values or select a quick test scenario on the left, then click{' '}
-                <strong className="text-cyan-400 font-mono">Predict Consumption</strong> to classify expected consumption level.
+                Fill in the details on the left — or pick a ready-made example above — then click{' '}
+                <strong className="text-cyan-400">Check My Electricity Usage</strong> to get your prediction.
               </p>
-              <div className="pt-2 text-[11px] font-mono text-slate-500">
-                Service: <code className="text-slate-400">POST /predict</code>
+              <div className="pt-2 text-[11px] text-slate-500">
+                ✅ Result will be: <span className="text-emerald-400 font-semibold">LOW</span> / <span className="text-amber-400 font-semibold">MEDIUM</span> / <span className="text-rose-400 font-semibold">HIGH</span>
               </div>
             </div>
           )}

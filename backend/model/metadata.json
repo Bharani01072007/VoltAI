@@ -1,0 +1,173 @@
+{
+  "best_model_name": "Random Forest",
+  "feature_cols": [
+    "temperature",
+    "humidity",
+    "hour",
+    "day",
+    "month",
+    "is_weekend",
+    "occupancy",
+    "previous_consumption",
+    "appliance_usage"
+  ],
+  "class_labels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH"
+  ],
+  "results": [
+    {
+      "model_name": "Logistic Regression",
+      "algorithm_family": "Generalized Linear Model",
+      "accuracy": 0.8775,
+      "precision_macro": 0.8778,
+      "recall_macro": 0.8774,
+      "f1_score_macro": 0.8775,
+      "precision_weighted": 0.8778,
+      "recall_weighted": 0.8775,
+      "f1_score_weighted": 0.8776,
+      "hyperparameters": {
+        "C": 1.0,
+        "solver": "lbfgs",
+        "max_iter": 1000
+      }
+    },
+    {
+      "model_name": "Random Forest",
+      "algorithm_family": "Ensemble Decision Trees (Bagging)",
+      "accuracy": 0.9325,
+      "precision_macro": 0.9326,
+      "recall_macro": 0.9325,
+      "f1_score_macro": 0.9325,
+      "precision_weighted": 0.9326,
+      "recall_weighted": 0.9325,
+      "f1_score_weighted": 0.9325,
+      "hyperparameters": {
+        "n_estimators": 150,
+        "max_depth": 12,
+        "min_samples_split": 4,
+        "criterion": "gini"
+      }
+    },
+    {
+      "model_name": "Support Vector Machine",
+      "algorithm_family": "Kernel Machine (RBF Kernel)",
+      "accuracy": 0.9179,
+      "precision_macro": 0.9178,
+      "recall_macro": 0.9179,
+      "f1_score_macro": 0.9178,
+      "precision_weighted": 0.9178,
+      "recall_weighted": 0.9179,
+      "f1_score_weighted": 0.9178,
+      "hyperparameters": {
+        "C": 2.0,
+        "kernel": "rbf",
+        "gamma": "scale",
+        "probability": true
+      }
+    }
+  ],
+  "confusion_matrices": {
+    "Logistic Regression": [
+      [
+        718,
+        85,
+        0
+      ],
+      [
+        103,
+        649,
+        46
+      ],
+      [
+        0,
+        60,
+        739
+      ]
+    ],
+    "Random Forest": [
+      [
+        754,
+        49,
+        0
+      ],
+      [
+        48,
+        719,
+        31
+      ],
+      [
+        0,
+        34,
+        765
+      ]
+    ],
+    "Support Vector Machine": [
+      [
+        743,
+        60,
+        0
+      ],
+      [
+        77,
+        692,
+        29
+      ],
+      [
+        0,
+        31,
+        768
+      ]
+    ]
+  },
+  "feature_importances": [
+    {
+      "feature": "previous_consumption",
+      "importance": 0.3508,
+      "label": "Previous Consumption"
+    },
+    {
+      "feature": "hour",
+      "importance": 0.2655,
+      "label": "Hour"
+    },
+    {
+      "feature": "appliance_usage",
+      "importance": 0.1261,
+      "label": "Appliance Usage"
+    },
+    {
+      "feature": "occupancy",
+      "importance": 0.1114,
+      "label": "Occupancy"
+    },
+    {
+      "feature": "temperature",
+      "importance": 0.0599,
+      "label": "Temperature"
+    },
+    {
+      "feature": "is_weekend",
+      "importance": 0.0272,
+      "label": "Is Weekend"
+    },
+    {
+      "feature": "humidity",
+      "importance": 0.0234,
+      "label": "Humidity"
+    },
+    {
+      "feature": "month",
+      "importance": 0.019,
+      "label": "Month"
+    },
+    {
+      "feature": "day",
+      "importance": 0.0167,
+      "label": "Day"
+    }
+  ],
+  "test_samples": 2400,
+  "total_samples": 12000
+}

@@ -22,7 +22,7 @@ class ApiClient {
     const storedPreferLive = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY_PREFER_LIVE) : null;
 
     this.baseUrl = storedUrl || envUrl || 'http://localhost:8000';
-    this.preferLive = storedPreferLive === 'true';
+    this.preferLive = storedPreferLive !== null ? storedPreferLive === 'true' : true;
   }
 
   public getBaseUrl(): string {

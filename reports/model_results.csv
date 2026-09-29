@@ -1,0 +1,4 @@
+model_name,algorithm_family,accuracy,precision_macro,recall_macro,f1_score_macro,precision_weighted,recall_weighted,f1_score_weighted,hyperparameters
+Logistic Regression,Generalized Linear Model,0.8775,0.8778,0.8774,0.8775,0.8778,0.8775,0.8776,"{'C': 1.0, 'solver': 'lbfgs', 'max_iter': 1000}"
+Random Forest,Ensemble Decision Trees (Bagging),0.9325,0.9326,0.9325,0.9325,0.9326,0.9325,0.9325,"{'n_estimators': 150, 'max_depth': 12, 'min_samples_split': 4, 'criterion': 'gini'}"
+Support Vector Machine,Kernel Machine (RBF Kernel),0.9179,0.9178,0.9179,0.9178,0.9178,0.9179,0.9178,"{'C': 2.0, 'kernel': 'rbf', 'gamma': 'scale', 'probability': True}"
